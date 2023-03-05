@@ -1,0 +1,12 @@
+spring:
+  pulsar:
+    consumer:
+      dead-letter-policy:
+        max-redeliver-count: 3
+        dead-letter-topic: collibra-asset-promotion-request-dead-letter
+
+collibra:
+  testtask:
+    messaging:
+      promotionRequestTopic: collibra-asset-promotion-request
+      promotionWorkTopic: collibra-asset-promotion-work

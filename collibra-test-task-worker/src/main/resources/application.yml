@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    hikari:
+      username: app
+      password: ${APP_DB_PASSWORD}
+      minimum-idle: 1
+      maximum-pool-size: 10
+      jdbc-url: ${APP_DB_URL:jdbc:postgresql://localhost:5432/collibra}
+      pool-name: "Collibra test task"
+    url: ${APP_DB_URL:jdbc:postgresql://localhost:5432/collibra}
+
+  jdbc:
+    template:
+      fetch-size: 1000
+
+  pulsar:
+    consumer:
+      dead-letter-policy:
+        max-redeliver-count: 3
+        dead-letter-topic: collibra-asset-promotion-work-dead-letter
+
+collibra:
+  testtask:
+    messaging:
+      promotionWorkTopic: collibra-asset-promotion-work

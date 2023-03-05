@@ -1,0 +1,24 @@
+spring:
+  r2dbc:
+    url: ${APP_DB_URL:r2dbc:postgresql://localhost:5432/collibra}
+    username: app
+    password: ${APP_DB_PASSWORD}
+  datasource:
+    hikari:
+      username: app
+      password: ${APP_DB_PASSWORD}
+      minimum-idle: 1
+      maximum-pool-size: 10
+      jdbc-url: ${APP_DB_URL:jdbc:postgresql://localhost:5432/collibra}
+      pool-name: "Collibra test task"
+  jdbc:
+    template:
+      fetch-size: 1000
+
+collibra:
+  testtask:
+    messaging:
+      promotionRequestTopic: collibra-asset-promotion-request
+
+server:
+  port: 8083
